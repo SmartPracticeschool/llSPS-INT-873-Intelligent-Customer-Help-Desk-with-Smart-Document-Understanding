@@ -1,0 +1,174 @@
+[
+    {
+        "id": "5f15d581.678fcc",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bc1a587.abfa3a8",
+        "type": "ui_form",
+        "z": "5f15d581.678fcc",
+        "name": "",
+        "label": "",
+        "group": "1f46a280.2e3976",
+        "order": 1,
+        "width": 9,
+        "height": 2,
+        "options": [
+            {
+                "label": "Your statement:",
+                "value": "question",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "question": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "738972cd.7fb924"
+            ]
+        ]
+    },
+    {
+        "id": "738972cd.7fb924",
+        "type": "function",
+        "z": "5f15d581.678fcc",
+        "name": "",
+        "func": "msg.payload=msg.payload.question;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 270,
+        "y": 240,
+        "wires": [
+            [
+                "645c6e1c.39d378",
+                "f9f4ed77.4b9b6"
+            ]
+        ]
+    },
+    {
+        "id": "3dab3dc.12b8442",
+        "type": "function",
+        "z": "5f15d581.678fcc",
+        "name": "",
+        "func": "msg.payload=msg.payload.output.text[0];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 240,
+        "wires": [
+            [
+                "8abd5708.eb1188",
+                "68d4dcc6.b67c44"
+            ]
+        ]
+    },
+    {
+        "id": "f9f4ed77.4b9b6",
+        "type": "watson-conversation-v1",
+        "z": "5f15d581.678fcc",
+        "name": "",
+        "workspaceid": "cbf31924-0fea-41c6-accf-27767c6e3b10",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "service-endpoint": "https://api.eu-gb.assistant.watson.cloud.ibm.com/instances/7f7d57af-ec07-421d-9085-a7d9b9391b41",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "3dab3dc.12b8442"
+            ]
+        ]
+    },
+    {
+        "id": "645c6e1c.39d378",
+        "type": "ui_text",
+        "z": "5f15d581.678fcc",
+        "group": "1f46a280.2e3976",
+        "order": 3,
+        "width": 9,
+        "height": 2,
+        "name": "",
+        "label": "Your Input:",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 530,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "8abd5708.eb1188",
+        "type": "debug",
+        "z": "5f15d581.678fcc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 880,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "68d4dcc6.b67c44",
+        "type": "ui_text",
+        "z": "5f15d581.678fcc",
+        "group": "fe8719a0.013528",
+        "order": 1,
+        "width": 9,
+        "height": 7,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 880,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1f46a280.2e3976",
+        "type": "ui_group",
+        "z": "",
+        "name": "Enter Your Question here:",
+        "tab": "47a93745.660588",
+        "order": 1,
+        "disp": true,
+        "width": 9,
+        "collapse": false
+    },
+    {
+        "id": "fe8719a0.013528",
+        "type": "ui_group",
+        "z": "",
+        "name": "The answer is:",
+        "tab": "47a93745.660588",
+        "order": 2,
+        "disp": true,
+        "width": 9,
+        "collapse": false
+    },
+    {
+        "id": "47a93745.660588",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Smart Document Understanding Chat bot",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
